@@ -19,3 +19,11 @@ if today in birthday_dict:      #it check key only in method
 
     # Replace [NAME] with the actual name
     modified_letter = changed.replace("[NAME]",data_row["name"])
+
+    email = "sshuhaib274@gmail.com"
+    password = "wolbqcyegqklzxgj"
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+        connection.starttls()
+        connection.login(user=email, password=password)
+        connection.sendmail(from_addr=email, to_addrs=data_row['email'],
+                            msg=f"Subject:Birthday_wish\n\n{modified_letter}")
